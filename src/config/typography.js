@@ -3,7 +3,7 @@
 
 // Imports
 import React from 'react';
-import {Text} from 'react-native';
+import {Text, View} from 'react-native';
 import {darkMode} from '../../settings';
 import {
   whiteMedium,
@@ -13,16 +13,18 @@ import {
   whiteLight,
   greyLight,
 } from './colors';
+import {lightColor} from './theme';
 
 // Most commonly used Text Components are located in this file
 
-export const Header = props => {
+export const Heading = props => {
   return (
     <Text
       style={{
         fontSize: 26,
         color: darkMode ? whiteMedium : blackMedium,
         fontFamily: 'Poppins-SemiBold',
+        ...props.style,
       }}>
       {props.children}
     </Text>
@@ -36,6 +38,7 @@ export const Title = props => {
         fontSize: 22,
         color: darkMode ? whiteLight : blackLight,
         fontFamily: 'Poppins-SemiBold',
+        ...props.style,
       }}>
       {props.children}
     </Text>
@@ -49,6 +52,7 @@ export const Subtitle = props => {
         fontSize: 18,
         color: darkMode ? whiteLight : blackLight,
         fontFamily: 'Poppins-Regular',
+        ...props.style,
       }}>
       {props.children}
     </Text>
@@ -62,6 +66,7 @@ export const Body = props => {
         fontSize: 16,
         color: darkMode ? whiteLight : blackLight,
         fontFamily: 'Poppins-Regular',
+        ...props.style,
       }}>
       {props.children}
     </Text>
@@ -75,6 +80,7 @@ export const Caption = props => {
         fontSize: 14,
         color: darkMode ? whiteLight : blackLight,
         fontFamily: 'Poppins-Light',
+        ...props.style,
       }}>
       {props.children}
     </Text>
@@ -88,8 +94,30 @@ export const Placeholder = props => {
         fontSize: 14,
         color: darkMode ? greyLight : greyDark,
         fontFamily: 'Poppins-Regular',
+        ...props.style,
       }}>
       {props.children}
     </Text>
+  );
+};
+
+export const TypographyShowcase = () => {
+  return (
+    <View
+      style={{
+        height: '100%',
+        paddingVertical: '40%',
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
+        backgroundColor: lightColor,
+      }}>
+      <Heading>Typography</Heading>
+      <Heading>Heading Text</Heading>
+      <Title>Title Text</Title>
+      <Subtitle>Subtitle Text</Subtitle>
+      <Body>Simple Text</Body>
+      <Caption>Caption text</Caption>
+      <Placeholder>Placeholder Text</Placeholder>
+    </View>
   );
 };
