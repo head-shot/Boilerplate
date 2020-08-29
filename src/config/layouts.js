@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {View, StatusBar, Dimensions, ScrollView} from 'react-native';
+import {View, StatusBar, ScrollView} from 'react-native';
 import {darkColor, lightColor} from './theme';
 import {darkMode} from '../../settings';
 import {getStatusBarHeight} from 'react-native-status-bar-height';
