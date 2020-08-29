@@ -1,9 +1,9 @@
 // Declare standardized Colors
 
 // Black
-export const blackDark = '#000000';
-export const blackMedium = '#121212';
-export const blackLight = '#1C1C1D';
+export const blackDark = '#121212';
+export const blackMedium = '#1C1C1D';
+export const blackLight = '#1f1f1f';
 // White
 export const whiteDark = '#F2F2F7';
 export const whiteMedium = '#FAFAFC';

@@ -2,7 +2,8 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {View} from 'react-native';
-import {Root} from './src/config/containers';
+import {Root} from './src/config/layouts';
+import {TypographyShowcase} from './src/config/typography';
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
         <View></View>
         <View></View>
       </Root>
+      {/* <TypographyShowcase /> */}
     </>
   );
 };
