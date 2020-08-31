@@ -18,13 +18,14 @@ import {darkMode} from '../../settings';
 
 // USAGE IN PARENT COMPONENTS
 {
-  // <ListPicker
+  // <GridPicker
   //   activeImage={require('./src/assets/images/password.png')}
   //   image={require('./src/assets/images/password.png')}
-  //   placeholder="-Select-"
   //   style={{
-    //  Add custom styles to the project
+  //  Add custom styles to the project
   // }}
+  //   numColumns={3}
+  //   placeholder="-Select-"
   //   data={[
   // {title: 1},
   // {title: 2},
@@ -36,13 +37,14 @@ import {darkMode} from '../../settings';
   // />
 }
 
-export default class ListPicker extends Component {
+export default class GridPicker extends Component {
   state = {
     value: this.props.placeholder ? this.props.placeholder : '-Select-',
+    numColumns: this.props.numColumns ? this.props.numColumns : 4,
     focused: false,
   };
 
-  renderRow(item) {
+  renderGrid(item) {
     return (
       <TouchableOpacity
         onPress={() => {
@@ -52,17 +54,15 @@ export default class ListPicker extends Component {
           this.RBSheet.close();
         }}
         style={{
-          margin: '1%',
+          margin: rootWidth * 0.02,
           marginTop: 0,
-          height: rootWidth * 0.12,
-          width: 0.85 * rootWidth,
-          alignItems: 'flex-start',
-          justifyContent: 'flex-end',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: rootWidth * 0.15,
+          width: 0.15 * rootWidth,
           borderColor: darkMode ? whiteLight : blackLight,
-          borderBottomWidth: 0.5,
-          borderRadius: 10,
-          paddingLeft: '5%',
-          paddingBottom: '2%',
+          borderWidth: 0.5,
+          borderRadius: 50,
           ...this.props.style,
         }}>
         <Caption>{item.title}</Caption>
@@ -166,8 +166,9 @@ export default class ListPicker extends Component {
               marginTop: '2%',
             }}>
             <FlatList
+              numColumns={this.state.numColumns}
               data={data}
-              renderItem={({item}) => this.renderRow(item)}
+              renderItem={({item}) => this.renderGrid(item)}
               keyExtractor={item => item.index}
             />
           </ScrollView>

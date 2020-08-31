@@ -14,6 +14,7 @@ import {primaryColor, lightColor} from '../config/theme';
 import {rootWidth, full} from '../config/constants';
 import {greyDark} from '../config/colors';
 
+// USAGE IN PARENT COMPONENTS
 {
   /* <Input
   activeImage={require('./src/assets/images/password.png')}
