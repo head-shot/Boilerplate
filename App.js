@@ -1,13 +1,19 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {View} from 'react-native';
+import {View, TouchableOpacity, Text, Image} from 'react-native';
 import {Root} from './src/config/layouts';
+import {Title, Subtitle} from './src/config/typography';
+import {rootWidth, full, rootHeight} from './src/config/constants';
+import Input from './src/components/Input';
 
-const App = () => {
-  return (
-    <>
-      <Root />
-    </>
-  );
-};
-
-export default App;
+export default class App extends React.Component {
+  render() {
+    return (
+      <>
+        <Root>
+          
+        </Root>
+      </>
+    );
+  }
+}
