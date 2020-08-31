@@ -3,13 +3,14 @@ import {
   blackLight,
   blackMedium,
   whiteMedium,
-  greenMedium,
+  greenDark,
+  greenLight,
 } from './colors';
 import {darkMode} from '../../settings';
 
 // Color Palette of the Specific Mobile App
-const primaryColor = greenMedium;
-const secondaryColor = '';
+const primaryColor = greenDark;
+const secondaryColor = greenLight;
 
 // Background colors
 const lightColor = darkMode ? blackLight : whiteMedium;

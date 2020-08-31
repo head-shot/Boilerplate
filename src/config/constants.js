@@ -6,5 +6,5 @@ export const rootWidth = Dimensions.get('screen').width;
 export const rootHeight = Dimensions.get('screen').height;
 export const full = '100%';
 
-export const childFull = 0.06 * full;
+export const childFull = '94%';
 export const childWidth = 0.06 * rootWidth;

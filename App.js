@@ -2,17 +2,35 @@
 import React from 'react';
 import {View, TouchableOpacity, Text, Image} from 'react-native';
 import {Root} from './src/config/layouts';
-import {Title, Subtitle} from './src/config/typography';
-import {rootWidth, full, rootHeight} from './src/config/constants';
-import ListPicker from './src/components/ListPicker';
-import GridPicker from './src/components/GridPicker';
-import Input from './src/components/Input';
+import {BorderlessButton} from './src/components/BorderlessButton';
 
 export default class App extends React.Component {
+  state = {
+    isLoading: false,
+  };
   render() {
+    const {isLoading} = this.state;
     return (
       <>
-        <Root></Root>
+        <Root>
+          <BorderlessButton
+            // main
+            style={
+              {
+                // Custom Styling
+              }
+            }
+            text="Next"
+            isLoading={isLoading}
+            onPress={() => {
+              if (isLoading) {
+                // this.setState({isLoading: !isLoading});
+              } else {
+                this.setState({isLoading: !isLoading});
+              }
+            }}
+          />
+        </Root>
       </>
     );
   }

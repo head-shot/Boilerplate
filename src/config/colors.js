@@ -9,9 +9,9 @@ export const whiteDark = '#F2F2F7';
 export const whiteMedium = '#FAFAFC';
 export const whiteLight = '#FFFFFF';
 // Grey
-export const greyDark = '#BDBDBD';
-export const greyMedium = '#E0E0E0';
-export const greyLight = '#EEEEEE';
+export const greyDark = '#ABABAB';
+export const greyMedium = '#BDBDBD';
+export const greyLight = '#E0E0E0';
 // Brown
 export const brownDark = '#8D6E63';
 export const brownMedium = '#BCAAA4';
