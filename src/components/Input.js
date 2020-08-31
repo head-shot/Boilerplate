@@ -22,8 +22,7 @@ import {greyDark} from '../config/colors';
   password
   placeholder="Password"
   onChangeText={text => {
-    console.log(text);
-    // this.setState({password: text});
+    this.setState({text: text});
   }}
 />; */
 }
@@ -108,9 +107,9 @@ const styles = StyleSheet.create({
   imageView: {
     height: rootWidth * 0.125,
     borderWidth: 0.75,
-    borderTopLeftRadius: 75,
+    borderTopLeftRadius: 50,
     backgroundColor: lightColor,
-    borderBottomLeftRadius: 75,
+    borderBottomLeftRadius: 50,
     borderRightWidth: 0,
     width: rootWidth * 0.125,
     alignItems: 'center',

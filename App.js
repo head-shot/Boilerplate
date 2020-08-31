@@ -4,6 +4,7 @@ import {View, TouchableOpacity, Text, Image} from 'react-native';
 import {Root} from './src/config/layouts';
 import {Title, Subtitle} from './src/config/typography';
 import {rootWidth, full, rootHeight} from './src/config/constants';
+import ListPicker from './src/components/ListPicker';
 import Input from './src/components/Input';
 
 export default class App extends React.Component {
@@ -11,7 +12,13 @@ export default class App extends React.Component {
     return (
       <>
         <Root>
-          
+          <Input />
+          <ListPicker
+            data={[1, 2, 3]}
+            onClick={op => {
+              console.log(op);
+            }}
+          />
         </Root>
       </>
     );
