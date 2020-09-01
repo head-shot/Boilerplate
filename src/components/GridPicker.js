@@ -15,22 +15,31 @@ import {full, rootWidth, rootHeight} from '../config/constants';
 import {greyDark, whiteLight, blackLight} from '../config/colors';
 import {Placeholder, Caption} from '../config/typography';
 import {darkMode} from '../../settings';
+import BorderlessSearchbar from './BorderlessSearchbar';
 
 // USAGE IN PARENT COMPONENTS
 {
   // <GridPicker
   //   activeImage={require('./src/assets/images/password.png')}
   //   image={require('./src/assets/images/password.png')}
-  //   style={{
-  //  Add custom styles to the project
-  // }}
-  //   numColumns={3}
+  //   style={{}}
+  //   search
+  //   numColumns={4}
   //   placeholder="-Select-"
   //   data={[
-  // {title: 1},
-  // {title: 2},
-  // {title: 3},
-  // ]}
+  //     {
+  //       key: 'a',
+  //       value: 'Apple',
+  //     },
+  //     {
+  //       key: 'b',
+  //       value: 'Banana',
+  //     },
+  //     {
+  //       key: 'c',
+  //       value: 'Cucumber',
+  //     },
+  //   ]}
   //   onClick={op => {
   //     console.log(op);
   //   }}
@@ -40,8 +49,9 @@ import {darkMode} from '../../settings';
 export default class GridPicker extends Component {
   state = {
     value: this.props.placeholder ? this.props.placeholder : '-Select-',
-    numColumns: this.props.numColumns ? this.props.numColumns : 4,
+    numColumns: this.props.numColumns ? this.props.numColumns : 3,
     focused: false,
+    filteredData: this.props.data,
   };
 
   renderGrid(item) {
@@ -50,7 +60,7 @@ export default class GridPicker extends Component {
         onPress={() => {
           // Sending Data to the Parent
           this.props.onClick(item);
-          this.setState({focused: true, value: item.title});
+          this.setState({focused: true, value: item.value});
           this.RBSheet.close();
         }}
         style={{
@@ -58,20 +68,21 @@ export default class GridPicker extends Component {
           marginTop: 0,
           alignItems: 'center',
           justifyContent: 'center',
-          height: rootWidth * 0.15,
-          width: 0.15 * rootWidth,
+          height: rootWidth * 0.2,
+          width: 0.2 * rootWidth,
           borderColor: darkMode ? whiteLight : blackLight,
           borderWidth: 0.5,
-          borderRadius: 50,
+          borderRadius: 15,
           ...this.props.style,
         }}>
-        <Caption>{item.title}</Caption>
+        <Caption numberOfLines={1}>{item.value}</Caption>
       </TouchableOpacity>
     );
   }
 
   render() {
-    const {data, image, activeImage} = this.props;
+    const {data, image, activeImage, search} = this.props;
+    const {filteredData, focused, value, numColumns} = this.state;
     return (
       <>
         <View
@@ -84,7 +95,7 @@ export default class GridPicker extends Component {
           <View
             style={{
               height: rootWidth * 0.125,
-              borderColor: this.state.focused ? primaryColor : greyDark,
+              borderColor: focused ? primaryColor : greyDark,
               borderWidth: 0.75,
               borderTopLeftRadius: 50,
               backgroundColor: lightColor,
@@ -96,12 +107,13 @@ export default class GridPicker extends Component {
             }}>
             <Image
               style={{height: rootWidth * 0.05}}
-              source={this.state.focused ? activeImage : image}
+              source={focused ? activeImage : image}
               resizeMethod="resize"
               resizeMode="contain"
             />
           </View>
           <TouchableOpacity
+            activeOpacity={1}
             style={{
               marginLeft: -1,
               height: rootWidth * 0.125,
@@ -111,7 +123,7 @@ export default class GridPicker extends Component {
               width: rootWidth * 0.725,
               flexDirection: 'row',
               backgroundColor: lightColor,
-              borderColor: this.state.focused ? primaryColor : greyDark,
+              borderColor: focused ? primaryColor : greyDark,
               borderWidth: 0.75,
               justifyContent: 'space-between',
               paddingRight: rootWidth * 0.05,
@@ -120,14 +132,14 @@ export default class GridPicker extends Component {
             onPress={() => this.RBSheet.open()}>
             <Caption
               style={{
-                color: this.state.focused ? primaryColor : greyDark,
+                color: focused ? primaryColor : greyDark,
               }}>
-              {this.state.value}
+              {value}
             </Caption>
             <Placeholder
               style={{
                 fontSize: 10,
-                color: this.state.focused ? primaryColor : greyDark,
+                color: focused ? primaryColor : greyDark,
               }}>
               ▼
             </Placeholder>
@@ -139,7 +151,7 @@ export default class GridPicker extends Component {
           }}
           animationType={'fade'}
           closeOnDragDown
-          height={rootHeight * 0.5}
+          height={rootHeight * 0.65}
           openDuration={250}
           customStyles={{
             wrapper: {
@@ -158,6 +170,24 @@ export default class GridPicker extends Component {
               backgroundColor: primaryColor,
             },
           }}>
+          {search ? (
+            <View>
+              <BorderlessSearchbar
+                data={data}
+                placeholder="-Search-"
+                onChangeText={text => {
+                  if (text.length < 1) {
+                    this.setState({filteredData: this.props.data});
+                  }
+                }}
+                filtered={data => {
+                  this.setState({filteredData: data});
+                }}
+              />
+            </View>
+          ) : (
+            <View />
+          )}
           <ScrollView
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{
@@ -166,10 +196,10 @@ export default class GridPicker extends Component {
               marginTop: '2%',
             }}>
             <FlatList
-              numColumns={this.state.numColumns}
-              data={data}
+              numColumns={numColumns}
+              data={filteredData}
               renderItem={({item}) => this.renderGrid(item)}
-              keyExtractor={item => item.index}
+              keyExtractor={item => item.key}
             />
           </ScrollView>
         </RBSheet>

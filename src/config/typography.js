@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable react-native/no-inline-styles */
 
 // Imports
@@ -16,86 +17,92 @@ import {Root} from './layouts';
 
 // Most commonly used Text Components are located in this file
 
-export const Heading = ({style, children}) => {
+export const Heading = props => {
   return (
     <Text
+      {...props}
       style={{
         fontSize: 26,
         color: darkMode ? whiteMedium : blackMedium,
         fontFamily: 'Poppins-SemiBold',
-        ...style,
+        ...props.style,
       }}>
-      {children}
+      {props.children}
     </Text>
   );
 };
 
-export const Title = ({style, children}) => {
+export const Title = props => {
   return (
     <Text
+      {...props}
       style={{
         fontSize: 22,
         color: darkMode ? whiteLight : blackLight,
         fontFamily: 'Poppins-SemiBold',
-        ...style,
+        ...props.style,
       }}>
-      {children}
+      {props.children}
     </Text>
   );
 };
 
-export const Subtitle = ({style, children}) => {
+export const Subtitle = props => {
   return (
     <Text
+      {...props}
       style={{
         fontSize: 18,
         color: darkMode ? whiteLight : blackLight,
         fontFamily: 'Poppins-Regular',
-        ...style,
+        ...props.style,
       }}>
-      {children}
+      {props.children}
     </Text>
   );
 };
 
-export const Body = ({style, children}) => {
+export const Body = props => {
   return (
     <Text
+      {...props}
       style={{
         fontSize: 16,
         color: darkMode ? whiteLight : blackLight,
         fontFamily: 'Poppins-Regular',
-        ...style,
+        ...props.style,
       }}>
-      {children}
+      {props.children}
     </Text>
   );
 };
 
-export const Caption = ({style, children}) => {
+export const Caption = props => {
   return (
     <Text
+      {...props}
       style={{
         fontSize: 14,
         color: darkMode ? whiteLight : blackLight,
         fontFamily: 'Poppins-Light',
-        ...style,
+        ...props.style,
       }}>
-      {children}
+      {props.children}
     </Text>
   );
 };
 
-export const Placeholder = ({style, children}) => {
+export const Placeholder = props => {
   return (
     <Text
+      {...props}
       style={{
         fontSize: 14,
         color: darkMode ? greyLight : greyDark,
         fontFamily: 'Poppins-Regular',
-        ...style,
+        ...props.style,
       }}>
-      {children}
+      {props.children}
     </Text>
   );
 };
